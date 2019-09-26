@@ -13,6 +13,6 @@ router.get('/', (req, res) => {
       .catch(err => console.log(`Error: ${err}`));
 });
 
-
+router.get('/add', (req, res) => res.render('add'));
 
 module.exports = router;
