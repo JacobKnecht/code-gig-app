@@ -5,7 +5,7 @@ const sequelize = require('../config/database');
 const Op = Sequelize.Op;
 const Gig = require('../models/Gig');
 
-
+//Landing/Home page route
 router.get('/', (req, res) => {
     Gig.findAll()
       .then(gigs => {
@@ -16,8 +16,10 @@ router.get('/', (req, res) => {
       .catch(err => console.log(`Error: ${err}`));
 });
 
+//'Add Gig' form GET route
 router.get('/add', (req, res) => res.render('add'));
 
+//'Add Gig' form POST route
 router.post('/add', (req, res) => {
     let { title, technologies, description, budget, contact_email } = req.body;
     let errors = [];
@@ -61,6 +63,7 @@ router.post('/add', (req, res) => {
     }
 });
 
+//Search Bar route
 router.get('/search', (req, res) => {
     let { term } = req.query;
     term = term.toLowerCase();
